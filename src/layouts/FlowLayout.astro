@@ -19,9 +19,9 @@ const { pageTitle } = Astro.props;
 
     <body class="flex flex-col min-h-screen">
         <Header pageTitle={pageTitle} />
-
-        <slot />
-
+        <SideNav>
+            <slot />
+        </SideNav>
         <!-- Font Family -->
         <style>
             * {
