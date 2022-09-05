@@ -6,5 +6,5 @@
 
 ## Project Structure
 
-Montana Table Tennis Website is built with with Astro, Tailwind, and Typescript.
+Montana Table Tennis Website is built with with Astro and Tailwind.
 
