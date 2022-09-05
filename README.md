@@ -15,6 +15,7 @@ Original plans have it designed for just Montana, but current plans will increas
 * Server Side Rendering: Vercel (Node)
 * Storage & Authentication: Supabase
 * Email: ???
+* CSS Components: DaisyUI
 
 ## Goals
 
