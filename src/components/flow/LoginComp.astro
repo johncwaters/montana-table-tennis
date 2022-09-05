@@ -1,0 +1,105 @@
+---
+---
+
+<!-- FORM TITLE -->
+<div class="text-center pt-8">
+    <h1 class="text-3xl font-bold">Welcome back</h1>
+    <p class="text-base pt-2 pb-4">Please enter your details.</p>
+</div>
+<!-- LOGIN FORM -->
+<section class="flex justify-center">
+    <div class="form-control w-full max-w-xs">
+        <label class="label">
+            <span class="label-text">Email</span>
+        </label>
+        <input
+            type="text"
+            placeholder=""
+            class="input input-bordered input-primary w-full max-w-xs"
+        />
+        <label class="label">
+            <span class="label-text">Password</span>
+        </label>
+        <input
+            type="text"
+            placeholder=""
+            class="input input-bordered input-primary w-full max-w-xs"
+        />
+
+        <label class="label cursor-pointer pt-4 pb-4">
+            <input
+                type="checkbox"
+                checked="checked"
+                class="checkbox checkbox-primary"
+            />
+            <span class="label-text pl-0 pr-14">Remember me</span>
+
+            <span class="label-text"></span>
+            <span class="label-text-alt"
+                ><a class="text-accent-focus" href="/flow/forgot-password"
+                    >Forgot Password?</a
+                >
+            </span>
+        </label>
+
+        <button id="submit" type="submit" class="btn btn-primary">Submit</button
+        >
+        <!-- ALT LOGIN OPTIONS -->
+        <button class="btn btn-outline gap-2 mt-2 mb-2">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                ></path>
+            </svg>
+            Google
+        </button>
+        <button class="btn btn-outline gap-2 mt-2 mb-2">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                ></path>
+            </svg>
+            Facebook
+        </button>
+        <button class="btn btn-outline gap-2 mt-2 mb-2">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                ></path>
+            </svg>
+            Apple
+        </button>
+
+        <!-- NO ACCOUNT OPTIONS -->
+        <span class="label-text pt-4">
+            Don't have an account? <a
+                class="text-accent-focus"
+                href="/flow/register">Sign up</a
+            >
+        </span>
+    </div>
+</section>

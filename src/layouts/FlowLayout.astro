@@ -1,0 +1,32 @@
+---
+import BaseHead from "../components/interface/BaseHead.astro";
+import Header from "../components/interface/Header.astro";
+import FooterNav from "../components/interface/FooterNav.astro";
+import SideNav from "../components/interface/SideNav.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+
+//get the pages title to display
+export interface Props {
+    pageTitle: string;
+}
+
+const { pageTitle } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html data-theme="light" lang="en-us">
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+
+    <body class="flex flex-col min-h-screen">
+        <Header pageTitle={pageTitle} />
+
+        <slot />
+
+        <!-- Font Family -->
+        <style>
+            * {
+                font-family: Roboto, sans-serif;
+            }
+        </style>
+    </body>
+</html>
