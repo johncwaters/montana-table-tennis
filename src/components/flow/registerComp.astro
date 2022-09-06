@@ -44,12 +44,12 @@
     </label>
     <input
         id="password"
-        type="text"
+        type="password"
         placeholder=""
         class="input input-bordered input-primary w-full max-w-xs"
     />
 
-    <button id="submit" type="submit" class="btn btn-primary mt-4"
+    <button id="submit" type="button" class="btn btn-primary mt-4"
         >Submit</button
     >
 </form>
@@ -57,13 +57,15 @@
 <script>
     //ON SUBMIT:
     //Validate correct data was entered, if not, display error and helpers
-    //If valid, submit to supabase
-    //Grab session and redirect to successful sign-up screen to confirm email
+    //If valid, check if user already exsists
+    //If no user exsists, register as new user
+    //Redirect to successful sign-up screen to have user confirm email
+    //User confirms email and signs in, finally providing a Session key
     import { supabase } from "../auth/publicClient";
     var btn = document.getElementById("submit");
-    btn!.addEventListener("click", func);
+    btn!.addEventListener("click", getFormData);
 
-    function func() {
+    async function getFormData() {
         var fullName = (<HTMLInputElement>document.getElementById("full_name"))
             .value;
         var username = (<HTMLInputElement>document.getElementById("username"))
@@ -73,16 +75,17 @@
             .value;
 
         console.log(fullName, username, email, password);
+
+        await signUpWithEmail(email, password);
     }
-    async function signInWithEmail() {
-        const { user, session, error } = await supabase.auth.signIn({
-            email: "example@email.com",
-            password: "example-password",
+
+    async function signUpWithEmail(email: string, password: string) {
+        const { user, session, error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
         });
         if (error) alert(error);
 
         console.log(user, session);
     }
-
-    //Get Data on Submit
 </script>

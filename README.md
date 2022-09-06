@@ -10,7 +10,7 @@ Original plans have it designed for just Montana, but current plans will increas
 
 ### Tools:
 * Framework: Astro
-* UI Framework: React?
+* UI Framework: React
 * CSS Framework: Tailwind.css
 * Server Side Rendering: Vercel (Node)
 * Storage & Authentication: Supabase

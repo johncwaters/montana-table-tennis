@@ -1,7 +1,10 @@
 ---
 import DefaultPage from "../layouts/DefaultPage.astro";
+//test
+import Characters from "../components/Characters.jsx";
 ---
 
 <DefaultPage pageTitle="Play">
     <h1>Play</h1>
+    <Characters client:load />
 </DefaultPage>
