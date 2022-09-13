@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js'
 //potentially helpful https://dev.to/ankitjey/the-magic-of-react-query-and-supabase-1pom
 const options = {
     schema: 'public',
-    headers: { 'x-my-custom-header': 'my-app-name' },
+    //headers: { 'x-my-custom-header': 'my-app-name' },
     autoRefreshToken: true,
     persistSession: true,
     detectSessionInUrl: true,

@@ -1,0 +1,55 @@
+---
+//TODO: pull avatar from session
+
+//color based on the persons name
+function stringToColour(str: string) {
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    var colour = "#";
+    for (var i = 0; i < 3; i++) {
+        var value = (hash >> (i * 8)) & 0xff;
+        colour += ("00" + value.toString(16)).substr(-2);
+    }
+    return colour;
+}
+
+//get the users initials
+function getFirstLetters(str: string) {
+    const firstLetters = str
+        .split(" ")
+        .map((word) => word[0])
+        .join("");
+
+    return firstLetters;
+}
+
+export interface Props {
+    name: string;
+    avatar: string;
+}
+
+const { name, avatar } = Astro.props;
+
+//If no avatar url is provided, use initials instead
+var userName = !avatar ? getFirstLetters(name) : name; //TODO Repalce name with avatar
+var backgroundColor = !avatar ? stringToColour(name) : "grey";
+
+console.log(backgroundColor);
+---
+
+<div class="avatar placeholder">
+    <div
+        class="bg-neutral-focus text-neutral-content rounded-full w-24"
+        id="userAvatar"
+    >
+        <span class="text-3xl">{userName}</span>
+    </div>
+</div>
+
+<style define:vars={{ backgroundColor }}>
+    #userAvatar {
+        background-color: var(--backgroundColor);
+    }
+</style>

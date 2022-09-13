@@ -1,3 +1,11 @@
 ---
 //appears as https://MTT.com/user/userName
+//https://supabase.com/docs/guides/with-react#building-the-app
+
+import UserProfilePage from "../../layouts/UserProfilePage.astro";
+import UserAvatar from "../../components/userUi/userAvatar.astro";
 ---
+
+<UserProfilePage pageTitle="UserName">
+    <UserAvatar name="John Doe" avatar="" />
+</UserProfilePage>

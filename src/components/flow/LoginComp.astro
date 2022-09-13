@@ -8,38 +8,38 @@
 </div>
 <!-- LOGIN FORM -->
 <section class="flex justify-center">
-    <div class="form-control w-full max-w-xs">
+    <div class="form-control w-screen max-w-xs">
         <label class="label">
             <span class="label-text">Email</span>
         </label>
         <input
+            id="email"
             type="text"
             placeholder=""
             class="input input-bordered input-primary w-full max-w-xs"
         />
         <label class="label">
             <span class="label-text">Password</span>
-        </label>
-        <input
-            type="text"
-            placeholder=""
-            class="input input-bordered input-primary w-full max-w-xs"
-        />
-
-        <label class="label cursor-pointer pt-4 pb-4">
-            <input
-                type="checkbox"
-                checked="checked"
-                class="checkbox checkbox-primary"
-            />
-            <span class="label-text pl-0 pr-14">Remember me</span>
-
-            <span class="label-text"></span>
             <span class="label-text-alt"
                 ><a class="text-accent-focus" href="/flow/forgot-password"
                     >Forgot Password?</a
                 >
             </span>
+        </label>
+        <input
+            id="password"
+            type="password"
+            placeholder=""
+            class="input input-bordered input-primary w-full max-w-xs"
+        />
+
+        <label class="label cursor-pointer pt-4 pb-4 w-fit">
+            <input
+                type="checkbox"
+                checked="checked"
+                class="checkbox checkbox-primary mr-3"
+            />
+            <span class="label-text">Remember me</span>
         </label>
 
         <button id="submit" type="submit" class="btn btn-primary">Submit</button
@@ -103,3 +103,37 @@
         </span>
     </div>
 </section>
+
+<script>
+    //ON SUBMIT:
+    //Validate correct data was entered, if not, display error and helpers
+    //If valid, check if user already exsists
+    //If no user exsists, register as new user
+    //Redirect to successful sign-up screen to have user confirm email
+    //User confirms email and signs in, finally providing a Session key
+
+    import { supabase } from "../auth/publicClient";
+    var btn = document.getElementById("submit");
+    btn!.addEventListener("click", getFormData);
+
+    async function getFormData() {
+        var results = {
+            email: (<HTMLInputElement>document.getElementById("email")).value,
+            password: (<HTMLInputElement>document.getElementById("password"))
+                .value,
+        };
+
+        console.log(results);
+
+        await signInWithEmail(results);
+    }
+
+    async function signInWithEmail(results: object) {
+        const { user, session, error } = await supabase.auth.signIn({
+            email: results.email,
+            password: results.password,
+        });
+
+        console.log(session, error);
+    }
+</script>

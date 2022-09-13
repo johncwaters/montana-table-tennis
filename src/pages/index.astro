@@ -5,3 +5,9 @@ import DefaultPage from "../layouts/DefaultPage.astro";
 <DefaultPage pageTitle="Home">
 	<h1>Hello world</h1>
 </DefaultPage>
+
+<script>
+	import { supabase } from "../components/auth/publicClient";
+	const session = supabase.auth.session();
+	console.log(session);
+</script>

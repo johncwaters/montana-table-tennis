@@ -18,7 +18,7 @@
     <input
         id="full_name"
         type="text"
-        placeholder="John Doe"
+        placeholder=""
         class="input input-bordered input-primary w-full max-w-xs"
     />
     <label class="label">
@@ -61,31 +61,37 @@
     //If no user exsists, register as new user
     //Redirect to successful sign-up screen to have user confirm email
     //User confirms email and signs in, finally providing a Session key
-    import { supabase } from "../auth/publicClient";
+
     var btn = document.getElementById("submit");
     btn!.addEventListener("click", getFormData);
 
     async function getFormData() {
-        var fullName = (<HTMLInputElement>document.getElementById("full_name"))
-            .value;
-        var username = (<HTMLInputElement>document.getElementById("username"))
-            .value;
-        var email = (<HTMLInputElement>document.getElementById("email")).value;
-        var password = (<HTMLInputElement>document.getElementById("password"))
-            .value;
+        var results = {
+            email: (<HTMLInputElement>document.getElementById("email")).value,
+            password: (<HTMLInputElement>document.getElementById("password"))
+                .value,
+            username: (<HTMLInputElement>document.getElementById("username"))
+                .value,
+            fullName: (<HTMLInputElement>document.getElementById("full_name"))
+                .value,
+        };
 
-        console.log(fullName, username, email, password);
+        console.log(results);
 
-        await signUpWithEmail(email, password);
+        await signUpWithEmail(results);
     }
 
-    async function signUpWithEmail(email: string, password: string) {
-        const { user, session, error } = await supabase.auth.signUp({
-            email: email,
-            password: password,
-        });
-        if (error) alert(error);
-
-        console.log(user, session);
+    async function signUpWithEmail(results: object) {
+        fetch("/api/auth/registerUser", {
+            method: "POST",
+            body: JSON.stringify(results),
+        })
+            .then((response) => {
+                console.log(response.url);
+                window.location.href = response.url;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 </script>
