@@ -1,0 +1,33 @@
+---
+import UserAvatar from "./smallComponents/userAvatar.astro";
+
+export interface User {
+    userName: string;
+    city: string;
+    state: string;
+    playStyle?: string;
+    ittfRank?: number;
+    about?: string;
+}
+export interface Props {
+    userData: User;
+}
+
+const { userData } = Astro.props;
+---
+
+<div class="p-3" id="userProfileCard">
+    <div class="grid grid-cols-2 gap-2">
+        <div class="align-center text-center p-3">
+            <UserAvatar name={userData.userName} avatar="" />
+        </div>
+        <div class="pt-3 pb-3 text-sm lg:text-base">
+            <h2 class="text-lg font-bold">{userData.userName}</h2>
+            <p>{userData.city}, {userData.state}</p>
+            <p>Playstyle: {userData.playStyle}</p>
+            <p>ITTF Rank: {userData.ittfRank}</p>
+        </div>
+    </div>
+    <p class="text-lg font-bold">About:</p>
+    <p>{userData.about}</p>
+</div>

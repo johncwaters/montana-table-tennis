@@ -35,8 +35,6 @@ const { name, avatar } = Astro.props;
 //If no avatar url is provided, use initials instead
 var userName = !avatar ? getFirstLetters(name) : name; //TODO Repalce name with avatar
 var backgroundColor = !avatar ? stringToColour(name) : "grey";
-
-console.log(backgroundColor);
 ---
 
 <div class="avatar placeholder">

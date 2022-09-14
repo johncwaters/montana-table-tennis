@@ -3,9 +3,19 @@
 //https://supabase.com/docs/guides/with-react#building-the-app
 
 import UserProfilePage from "../../layouts/UserProfilePage.astro";
-import UserAvatar from "../../components/userUi/userAvatar.astro";
+import UserProfileCard from "../../components/userUi/userProfileCard.astro";
+
+//Example user data
+var userData = {
+    userName: "John Doe",
+    city: "Missoula",
+    state: "MT",
+    playStyle: "Chop Blocker",
+    ittfRank: 2000,
+    about: "John lives in Missoula with his 24 dogs and 1 cat, works at the coal mine, and plays table tennis on the weekends.",
+};
 ---
 
-<UserProfilePage pageTitle="UserName">
-    <UserAvatar name="John Doe" avatar="" />
+<UserProfilePage pageTitle={userData.userName}>
+    <UserProfileCard userData={userData} />
 </UserProfilePage>
