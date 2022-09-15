@@ -19,16 +19,17 @@ const { pageTitle } = Astro.props;
 
     <body class="flex flex-col min-h-screen">
         <Header pageTitle={pageTitle} />
+
         <SideNav>
             <slot />
             <FooterNav />
-        </SideNav>
 
-        <!-- Font Family -->
-        <style>
-            * {
-                font-family: Roboto, sans-serif;
-            }
-        </style>
+            <!-- Font Family -->
+            <style>
+                * {
+                    font-family: Roboto, sans-serif;
+                }
+            </style>
+        </SideNav>
     </body>
 </html>
