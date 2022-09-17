@@ -5,11 +5,11 @@
 import UserProfilePage from "../../layouts/UserProfilePage.astro";
 import UserProfileCard from "../../components/userUi/profile/userProfileCard.astro";
 import UserProfileStatsCard from "../../components/userUi/profile/userProfileStatsCard.astro";
-import TopNotification from "../../components/interface/popups/topNotification.astro";
+import InfoNotification from "../../components/interface/popups/infoNotification.astro";
 
 //Example user data
 var userData = {
-    userName: "John Doe",
+    userName: "John Waters",
     city: "Missoula",
     state: "MT",
     playStyle: "Chop Blocker",
@@ -18,13 +18,13 @@ var userData = {
 };
 
 var notificationData = {
-    notification: "Registration for Bozeman State Tournament is now open!",
-    url: "#",
+    notification: "Registration for the Bozeman State Tournament is now open!",
+    url: "/play",
 };
 ---
 
 <UserProfilePage pageTitle="Profile">
-    <TopNotification notificationData={notificationData} />
+    <InfoNotification notificationData={notificationData} />
     <UserProfileCard userData={userData} />
     <UserProfileStatsCard />
 </UserProfilePage>
