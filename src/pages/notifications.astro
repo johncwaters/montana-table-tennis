@@ -1,7 +1,14 @@
 ---
 import DefaultPage from "../layouts/DefaultPage.astro";
+import Notification from "../components/interface/notifications/Notification.astro";
+
+var notificationOne = {
+    header: "Big Sky State Games",
+    message: "Registration for the Big Sky State Games is now open!",
+    action: "Register",
+};
 ---
 
 <DefaultPage pageTitle="Notifications">
-    <h1>Notifications</h1>
+    <Notification notificationData={notificationOne} />
 </DefaultPage>

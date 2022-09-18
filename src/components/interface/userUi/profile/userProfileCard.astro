@@ -1,0 +1,56 @@
+---
+import UserAvatar from "../smallComponents/userAvatar.astro";
+
+export interface User {
+    userName: string;
+    city: string;
+    state: string;
+    club?: string;
+    playStyle?: string;
+    ittfRank?: number;
+    about?: string;
+}
+export interface Props {
+    userData: User;
+}
+
+const { userData } = Astro.props;
+---
+
+<div class="card w-80 bg-base-300 lg:w-96 p-3 m-3" id="userProfileCard">
+    <div class="grid grid-cols-3 gap-2 p-1">
+        <div class="align-center self-center text-center col-span-1">
+            <UserAvatar
+                name={userData.userName}
+                width="w-28"
+                textSize="text-3xl"
+            />
+        </div>
+        <div class="text-md pl-3 lg:text-base col-span-2">
+            <h2 class="text-lg font-bold underline underline-offset-4">
+                {userData.userName}
+            </h2>
+            <p>
+                <span class="font-semibold">Location:</span>
+                {userData.city}, {userData.state}
+            </p>
+
+            <p>
+                <span class="font-semibold">Playstyle:</span>
+                {userData.playStyle}
+            </p>
+            <p>
+                <span class="font-semibold">ITTF Rank:</span>
+                {userData.ittfRank}
+            </p>
+            <p>
+                <span class="font-semibold">Club:</span>
+                {userData.club}
+            </p>
+        </div>
+    </div>
+    <div class="p-2">
+        <p class="text-md font-bold">About:</p>
+        <p>{userData.about}</p>
+    </div>
+</div>

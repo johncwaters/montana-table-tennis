@@ -1,4 +1,5 @@
 ---
+import UserAvatar from "./userUi/smallComponents/userAvatar.astro";
 //get the pages title to display
 export interface Props {
     pageTitle: string;
@@ -10,7 +11,10 @@ const { pageTitle } = Astro.props;
 <!-- HEADER BAR -->
 <div class="navbar bg-base-200 drop-shadow-md">
     <div class="flex-none lg:hidden">
-        <label for="my-drawer-2" class="btn btn-circle swap swap-rotate">
+        <label
+            for="my-drawer-2"
+            class="btn btn-square btn-ghost swap swap-rotate"
+        >
             <!-- this hidden checkbox controls the state -->
             <input type="checkbox" />
 
@@ -50,8 +54,8 @@ const { pageTitle } = Astro.props;
         <a class="pl-1 font-bold normal-case text-xl">{pageTitle}</a>
     </div>
     <!-- DARK THEME TOGGLE -->
-    <div class="flex-none pr-5">
-        <label class="swap swap-rotate">
+    <div class="flex-none pr-3">
+        <label class="swap swap-rotate ml-3 mr-3">
             <!-- this hidden checkbox controls the state -->
             <input type="checkbox" id="theme-toggle" />
 
@@ -75,6 +79,12 @@ const { pageTitle } = Astro.props;
                 ></path>
             </svg>
         </label>
+        <UserAvatar
+            name="John Waters"
+            width="w-10"
+            textSize="text-auto"
+            href="location.href='/user/userprofile'"
+        />
     </div>
 
     <script>

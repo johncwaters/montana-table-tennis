@@ -27,22 +27,26 @@ function getFirstLetters(str: string) {
 
 export interface Props {
     name: string;
-    avatar: string;
+    avatar?: string;
+    width: string;
+    textSize: string;
+    href?: string;
 }
 
-const { name, avatar } = Astro.props;
+const { name, avatar, width, textSize, href } = Astro.props;
 
 //If no avatar url is provided, use initials instead
 var userName = !avatar ? getFirstLetters(name) : name; //TODO Repalce name with avatar
 var backgroundColor = !avatar ? stringToColour(name) : "grey";
+var classBuilderAvatar =
+    "bg-neutral-focus text-neutral-content rounded-full " + width;
+var classBuilderName = "text-primary-content " + textSize;
+var hrefBuilder = href; //TODO: this can eventually direct to the specific user
 ---
 
-<div class="avatar placeholder">
-    <div
-        class="bg-neutral-focus text-neutral-content rounded-full w-24"
-        id="userAvatar"
-    >
-        <span class="text-3xl">{userName}</span>
+<div class="avatar placeholder" onclick={hrefBuilder}>
+    <div class={classBuilderAvatar} id="userAvatar">
+        <span class={classBuilderName}>{userName}</span>
     </div>
 </div>
 

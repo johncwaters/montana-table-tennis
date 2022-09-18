@@ -1,7 +1,7 @@
 ---
 export interface Notification {
     notification: string;
-    url: string;
+    url?: string;
 }
 export interface Props {
     notificationData: Notification;
@@ -12,7 +12,10 @@ const { notificationData } = Astro.props;
 const notificationUrl = "location.href='" + notificationData.url + "';";
 ---
 
-<div id="infoNotification" class="alert alert-info shadow-lg w-11/12">
+<div
+    id="infoNotification"
+    class="alert alert-info shadow-lg w-11/12 mt-3 mb-2 cursor-pointer"
+>
     <div>
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,8 +32,22 @@ const notificationUrl = "location.href='" + notificationData.url + "';";
         <span onclick={notificationUrl} class="text-center"
             >{notificationData.notification}
         </span>
-        <div class="flex-none">
-            <button onclick="#" class="btn btn-sm z-50">X</button>
-        </div>
+    </div>
+    <div class="flex-none">
+        <button onclick="closeAlert(event)" class="btn btn-sm">X</button>
+        <button onclick={notificationUrl} class="btn btn-sm btn-primary"
+            >Register</button
+        >
     </div>
 </div>
+<script is:inline>
+    function closeAlert(event) {
+        let element = event.target;
+        while (element.nodeName !== "BUTTON") {
+            element = element.parentNode;
+        }
+        element.parentNode.parentNode.parentNode.removeChild(
+            element.parentNode.parentNode
+        );
+    }
+</script>

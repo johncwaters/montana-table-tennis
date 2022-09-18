@@ -3,8 +3,8 @@
 //https://supabase.com/docs/guides/with-react#building-the-app
 
 import UserProfilePage from "../../layouts/UserProfilePage.astro";
-import UserProfileCard from "../../components/userUi/profile/userProfileCard.astro";
-import UserProfileStatsCard from "../../components/userUi/profile/userProfileStatsCard.astro";
+import UserProfileCard from "../../components/interface/userUi/profile/userProfileCard.astro";
+import UserProfileStatsCard from "../../components/interface/userUi/profile/userProfileStatsCard.astro";
 import InfoNotification from "../../components/interface/popups/infoNotification.astro";
 
 //Example user data
@@ -12,6 +12,7 @@ var userData = {
     userName: "John Waters",
     city: "Missoula",
     state: "MT",
+    club: "Missoula Table Tennis Club",
     playStyle: "Chop Blocker",
     ittfRank: 2000,
     about: "John lives in Missoula with his 24 dogs and 1 cat, works at the coal mine, and plays table tennis on the weekends.",

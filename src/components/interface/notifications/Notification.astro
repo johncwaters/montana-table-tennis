@@ -1,0 +1,76 @@
+---
+export interface Notification {
+    header: string;
+    message: string;
+    action: string;
+    url?: string;
+    date?: Date;
+}
+export interface Props {
+    notificationData: Notification;
+}
+
+const { notificationData } = Astro.props;
+
+//TODO use map function to build notifications from API call
+//build url
+const notificationUrl = notificationData.url
+    ? "location.href='" + notificationData.url + "';"
+    : "location.href='#';";
+---
+
+<div class="alert shadow-lg w-11/12 mt-3 mb-2 cursor-pointer">
+    <div onclick={notificationUrl}>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="stroke-info flex-shrink-0 w-6 h-6"
+            ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+        </svg>
+        <div>
+            <h3 class="font-bold">{notificationData.header}</h3>
+            <div class="text-md">{notificationData.message}</div>
+        </div>
+    </div>
+    <div class="flex-none">
+        <!-- These notifications can be marked as read, but shouldn't go away -->
+        <button onclick={notificationUrl} class="btn btn-sm btn-primary"
+            >{notificationData.action}
+        </button>
+    </div>
+</div>
+
+<div
+    id="infoNotification"
+    class="alert alert-info shadow-lg w-11/12 h-32 mt-3 mb-2 cursor-pointer"
+>
+    <div>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="stroke-current flex-shrink-0 w-6 h-6"
+            ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+        </svg>
+        <span onclick={notificationUrl} class="text-center"
+            >{notificationData.message}
+        </span>
+    </div>
+    <div class="flex-none">
+        <!-- These notifications can be marked as read, but shouldn't go away -->
+        <button onclick={notificationUrl} class="btn btn-sm btn-primary"
+            >Register</button
+        >
+    </div>
+</div>
