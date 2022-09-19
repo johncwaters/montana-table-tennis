@@ -7,7 +7,7 @@
     <p class="text-base pt-2 pb-4">Please enter your email.</p>
 </div>
 <!-- LOGIN FORM -->
-<form class="flex justify-center">
+<section class="flex justify-center">
     <div class="form-control w-screen max-w-xs">
         <label class="label">
             <span class="label-text">Email</span>
@@ -25,10 +25,11 @@
                 >
             </span>
         </label>
-        <button id="submit" type="submit" class="btn btn-primary">Submit</button
+        <button id="submit" type="submit" class="btn btn-primary my-3"
+            >Reset Password</button
         >
     </div>
-</form>
+</section>
 
 <script>
     import { resetPassword } from "../auth/resetPassword";
@@ -39,6 +40,9 @@
         var results = {
             email: (<HTMLInputElement>document.getElementById("email")).value,
         };
-        await resetPassword(results.email);
+        var { data, error } = await resetPassword(results.email);
+
+        //TODO replace alert with proper popup
+        !error ? console.log("Reset password sent") : alert(error.message);
     }
 </script>
