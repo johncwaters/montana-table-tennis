@@ -1,12 +1,19 @@
 ---
 ---
 
-<section class="flex justify-center">
-    <div class="form-control w-full max-w-xs">
+<!-- FORM TITLE -->
+<div class="text-center pt-8">
+    <h1 class="text-3xl font-bold">Forgot Password</h1>
+    <p class="text-base pt-2 pb-4">Please enter your email.</p>
+</div>
+<!-- LOGIN FORM -->
+<form class="flex justify-center">
+    <div class="form-control w-screen max-w-xs">
         <label class="label">
             <span class="label-text">Email</span>
         </label>
         <input
+            id="email"
             type="text"
             placeholder=""
             class="input input-bordered input-primary w-full max-w-xs"
@@ -18,6 +25,20 @@
                 >
             </span>
         </label>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button id="submit" type="submit" class="btn btn-primary">Submit</button
+        >
     </div>
-</section>
+</form>
+
+<script>
+    import { resetPassword } from "../auth/resetPassword";
+    var btn = document.getElementById("submit");
+    btn!.addEventListener("click", resetPasswordFunc);
+
+    async function resetPasswordFunc() {
+        var results = {
+            email: (<HTMLInputElement>document.getElementById("email")).value,
+        };
+        await resetPassword(results.email);
+    }
+</script>
