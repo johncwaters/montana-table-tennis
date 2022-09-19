@@ -5,8 +5,3 @@ import DefaultPage from "../layouts/DefaultPage.astro";
 <DefaultPage pageTitle="Clubs">
     <h1>Clubs</h1>
 </DefaultPage>
-<script>
-    import { supabase } from "../components/auth/publicClient";
-    const session = supabase.auth.session();
-    console.log(session);
-</script>

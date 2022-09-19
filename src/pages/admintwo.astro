@@ -1,0 +1,38 @@
+---
+---
+
+<button class="btn" id="in">Sign In</button>
+<button class="btn" id="session">Current Session</button>
+<button class="btn" id="out">Sign Out</button>
+
+<script>
+    import { signOut } from "../components/auth/signoutUser";
+    import { supabase } from "../components/auth/publicClient";
+
+    var btn = document.getElementById("in");
+    btn!.addEventListener("click", signInWithEmail);
+
+    var btn1 = document.getElementById("session");
+    btn1!.addEventListener("click", getSession);
+
+    var btn2 = document.getElementById("out");
+    btn2!.addEventListener("click", signOutLocal);
+
+    function signOutLocal() {
+        signOut();
+    }
+
+    function getSession() {
+        const session = supabase.auth.session();
+        console.log(session);
+    }
+
+    async function signInWithEmail() {
+        const { user, session, error } = await supabase.auth.signIn({
+            email: "john@johncwaters.com",
+            password: "Homestead",
+        });
+
+        console.log(user, session, error);
+    }
+</script>

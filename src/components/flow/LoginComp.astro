@@ -112,11 +112,12 @@
     //Redirect to successful sign-up screen to have user confirm email
     //User confirms email and signs in, finally providing a Session key
 
-    import { supabase } from "../auth/publicClient";
+    import { signInWithEmail } from "../auth/signinUser";
     var btn = document.getElementById("submit");
-    btn!.addEventListener("click", getFormData);
+    btn!.addEventListener("click", signInUser);
 
-    async function getFormData() {
+    //grabs form data then signs in user
+    async function signInUser() {
         var results = {
             email: (<HTMLInputElement>document.getElementById("email")).value,
             password: (<HTMLInputElement>document.getElementById("password"))
@@ -125,15 +126,8 @@
 
         console.log(results);
 
-        await signInWithEmail(results);
-    }
-
-    async function signInWithEmail(results: object) {
-        const { user, session, error } = await supabase.auth.signIn({
-            email: results.email,
-            password: results.password,
-        });
-
-        console.log(session, error);
+        //sign in user func
+        var response = await signInWithEmail(results.email, results.password);
+        console.log(response);
     }
 </script>
