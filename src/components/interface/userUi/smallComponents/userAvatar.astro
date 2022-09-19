@@ -42,6 +42,10 @@ var classBuilderAvatar =
     "bg-neutral-focus text-neutral-content rounded-full " + width;
 var classBuilderName = "text-primary-content " + textSize;
 var hrefBuilder = href; //TODO: this can eventually direct to the specific user
+
+!hrefBuilder
+    ? null
+    : (classBuilderAvatar = classBuilderAvatar + " " + "cursor-pointer");
 ---
 
 <div class="avatar placeholder" onclick={hrefBuilder}>
